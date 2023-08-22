@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import Home from './screens/home';
 import Cart from './screens/cart';
+import ProductDetails from './screens/productDetails';
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -41,6 +42,11 @@ export default function AppNavigator() {
                     name='MainScreen'
                     component={MainScreen}
                     options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='ProductDetails'
+                    component={ProductDetails}
+                    
                 />
             </Stack.Navigator>
         </NavigationContainer>

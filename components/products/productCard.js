@@ -2,9 +2,12 @@ import { Image, Dimensions, StyleSheet, TouchableOpacity, Text } from "react-nat
 import { colors } from "../../utils/constants";
 
 const cardSize = Dimensions.get('window').width / 2.3
-export default function ProductCard({ item }) {
+export default function ProductCard({ item, onPress }) {
+    const onPressCard=()=>{
+        onPress(item.id)
+    }    
     return (
-        <TouchableOpacity style={styles.cardStyle}>
+        <TouchableOpacity style={styles.cardStyle} onPress={onPressCard}>
             <Image source={{ uri: item.thumbnail }} style={styles.imageStyle} />
             <Text style={styles.titleStyle} numberOfLines={1}>{item.title}</Text>
         </TouchableOpacity>

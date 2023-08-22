@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 export const productsSlice = createSlice({
     name: 'products',
@@ -8,20 +8,25 @@ export const productsSlice = createSlice({
         homeLoader: false
     },
     reducers: {
-        addToCart: (state, action)=>{
-
+        addToCart: (state, action) => {
+            if (!state.cart.includes(action.payload)) {
+                state.cart.push(action.payload)
+            }
         },
-        removeFromCart: (state, action)=>{
-
+        removeFromCart: (state, action) => {
+            let index = state.cart.findIndex((item) => item === action.payload);
+            console.log("state : ", state.cart)
+            console.log("index : ", index)
+            state.cart.splice(index, 1)
         },
-        setHomeLoader: (state, action)=>{
+        setHomeLoader: (state, action) => {
             state.homeLoader = action.payload
         },
-        homeFetchSucceeded: (state, action)=>{
+        homeFetchSucceeded: (state, action) => {
             state.products = action.payload
             state.homeLoader = false
         },
-        homeFetchFailed: (state, action)=>{
+        homeFetchFailed: (state, action) => {
             state.homeLoader = false
         }
     }

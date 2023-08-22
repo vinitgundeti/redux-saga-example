@@ -5,7 +5,7 @@ import { reduxTypes } from "../utils/constants";
 import Loader from "../components/common/loader";
 import ProductCard from "../components/products/productCard";
 
-export default function Home() {
+export default function Home({navigation}) {
     const dispatch = useDispatch()
     const homeState = useSelector((state) => state.appData)
 
@@ -14,10 +14,15 @@ export default function Home() {
         dispatch({ type: reduxTypes.HOME_DATA_FETCH })
     }, [])
 
-    const renderItem=({item})=>{
-        return <ProductCard item={item}/>
+    const onPressProduct=(id)=>{
+        navigation.navigate('ProductDetails', {id})
     }
 
+    const renderItem=({item})=>{
+        return <ProductCard item={item} onPress={onPressProduct}/>
+    }
+
+    console.log("homestate : ",homeState)
     return (
         <View style={styles.container}>
             {homeState.homeLoader ?

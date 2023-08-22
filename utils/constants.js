@@ -5,5 +5,8 @@ export const reduxTypes = {
 }
 
 export const colors = {
-    white: '#fff'
+    white: '#fff',
+    blue: '#038cfc',
+    lightBlue: '#79cce0',
+    gray: '#393a3b'
 }
